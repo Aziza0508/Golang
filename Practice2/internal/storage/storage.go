@@ -2,6 +2,7 @@ package storage
 
 import (
 	"practice2/internal/models"
+	"sort"
 	"sync"
 )
 
@@ -48,6 +49,9 @@ func (s *TaskStorage) GetAll() []models.Task {
 	for _, task := range s.tasks {
 		result = append(result, task)
 	}
+	sort.Slice(result, func(i, j int) bool {
+		return result[i].ID < result[j].ID
+	})
 	return result
 }
 

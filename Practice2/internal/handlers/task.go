@@ -97,7 +97,7 @@ func (h *TaskHandler) handlePatch(w http.ResponseWriter, r *http.Request) {
 	var req models.UpdateTaskRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.Done == nil {
 		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(models.ErrorResponse{Error: "invalid request body"})
+		json.NewEncoder(w).Encode(models.ErrorResponse{Error: "invalid done"})
 		return
 	}
 
